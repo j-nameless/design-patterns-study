@@ -1,11 +1,12 @@
 package com.example.designpatterns.patterns;
 
 import com.example.designpatterns.patterns.builder.Person;
-import com.example.designpatterns.patterns.factory.Phone;
-import com.example.designpatterns.patterns.factory.Computer;
+import com.example.designpatterns.patterns.factory.Apple;
+import com.example.designpatterns.patterns.factory.HuaWei;
 import com.example.designpatterns.patterns.factory.abstract_factory.AbstractFactory;
-import com.example.designpatterns.patterns.factory.abstract_factory.HuaWeiFactory;
-import com.example.designpatterns.patterns.factory.abstract_factory.AppleFactory;
+import com.example.designpatterns.patterns.factory.abstract_factory.ComputerFactory;
+import com.example.designpatterns.patterns.factory.abstract_factory.PhoneFactory;
+import com.example.designpatterns.patterns.factory.enums.AppleEnum;
 import com.example.designpatterns.patterns.factory.simple.SimpleFactory;
 import com.example.designpatterns.patterns.proxy.*;
 import com.example.designpatterns.patterns.state.StateMachine;
@@ -56,22 +57,22 @@ class PatternsApplicationTests {
 
     @Test
     public void factoryTest() {
-        Phone simplePhone = SimpleFactory.mackProduct(1);
-        Phone simplePhone2 = SimpleFactory.mackProduct(2);
-        System.out.println(simplePhone.getClass().getName());
-        System.out.println(simplePhone2.getClass().getName());
+        Apple simpleApple = SimpleFactory.mackProduct(AppleEnum.IPHONE);
+        Apple simpleApple2 = SimpleFactory.mackProduct(AppleEnum.MAC);
+        System.out.println(simpleApple.getClass().getName());
+        System.out.println(simpleApple2.getClass().getName());
 
-        AbstractFactory factory1 = new HuaWeiFactory();
-        Phone phone1 = factory1.makePhone();
-        Computer computer1 = factory1.makeComputer();
-        System.out.println(phone1.getClass().getName());
-        System.out.println(computer1.getClass().getName());
+        AbstractFactory factory1 = new ComputerFactory();
+        Apple apple1 = factory1.makeApple();
+        HuaWei huaWei1 = factory1.makeHuaWei();
+        System.out.println(apple1.getClass().getName());
+        System.out.println(huaWei1.getClass().getName());
 
-        AbstractFactory factory2 = new AppleFactory();
-        Phone phone2 = factory2.makePhone();
-        Computer computer2 = factory2.makeComputer();
-        System.out.println(phone2.getClass().getName());
-        System.out.println(computer2.getClass().getName());
+        AbstractFactory factory2 = new PhoneFactory();
+        Apple apple2 = factory2.makeApple();
+        HuaWei huaWei2 = factory2.makeHuaWei();
+        System.out.println(apple2.getClass().getName());
+        System.out.println(huaWei2.getClass().getName());
     }
 
     @Test

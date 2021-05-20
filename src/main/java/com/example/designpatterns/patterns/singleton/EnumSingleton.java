@@ -8,4 +8,8 @@ package com.example.designpatterns.patterns.singleton;
  */
 public enum  EnumSingleton {
     INSTANCE;
+
+    public void doSomething(){
+
+    }
 }

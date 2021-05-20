@@ -6,5 +6,5 @@ package com.example.designpatterns.patterns.factory;
  *
  * @author JC
  */
-public class HuaWeiPhone implements Phone {
+public class HuaWeiPhone implements HuaWei {
 }
