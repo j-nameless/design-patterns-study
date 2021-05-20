@@ -1,4 +1,4 @@
 package com.example.designpatterns.patterns.factory;
 
-public interface Product {
+public interface Computer {
 }

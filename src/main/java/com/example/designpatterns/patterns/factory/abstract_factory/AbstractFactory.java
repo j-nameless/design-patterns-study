@@ -1,7 +1,7 @@
 package com.example.designpatterns.patterns.factory.abstract_factory;
 
-import com.example.designpatterns.patterns.factory.Product;
-import com.example.designpatterns.patterns.factory.ProductS;
+import com.example.designpatterns.patterns.factory.Phone;
+import com.example.designpatterns.patterns.factory.Computer;
 
 /**
  * className AbstractFactory
@@ -10,6 +10,6 @@ import com.example.designpatterns.patterns.factory.ProductS;
  * @author JC
  */
 public interface AbstractFactory {
-    Product makeProduct();
-    ProductS makeProductS();
+    Phone makePhone();
+    Computer makeComputer();
 }

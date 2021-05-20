@@ -3,20 +3,20 @@ package com.example.designpatterns.patterns.factory.abstract_factory;
 import com.example.designpatterns.patterns.factory.*;
 
 /**
- * className Factory1
+ * className AppleFactory
  * date 2021/2/18
  *
  * @author JC
  */
-public class Factory2 implements AbstractFactory{
+public class AppleFactory implements AbstractFactory{
 
     @Override
-    public Product makeProduct() {
-        return new Product2();
+    public Phone makePhone() {
+        return new IPhone();
     }
 
     @Override
-    public ProductS makeProductS() {
-        return new ProductS2();
+    public Computer makeComputer() {
+        return new MacComputer();
     }
 }

@@ -1,10 +1,10 @@
 package com.example.designpatterns.patterns.factory;
 
 /**
- * className ProductS1
+ * className HuaWeiPhone
  * date 2021/2/18
  *
  * @author JC
  */
-public class ProductS2 implements ProductS{
+public class HuaWeiPhone implements Phone {
 }

@@ -1,8 +1,8 @@
 package com.example.designpatterns.patterns.factory.simple;
 
-import com.example.designpatterns.patterns.factory.Product;
-import com.example.designpatterns.patterns.factory.Product1;
-import com.example.designpatterns.patterns.factory.Product2;
+import com.example.designpatterns.patterns.factory.Phone;
+import com.example.designpatterns.patterns.factory.HuaWeiPhone;
+import com.example.designpatterns.patterns.factory.IPhone;
 
 /**
  * className SimpleFactory
@@ -12,12 +12,12 @@ import com.example.designpatterns.patterns.factory.Product2;
  */
 public class SimpleFactory {
 
-    public static Product mackProduct(int kid) {
+    public static Phone mackProduct(int kid) {
         switch (kid) {
             case 1:
-                return new Product1();
+                return new HuaWeiPhone();
             case 2:
-                return new Product2();
+                return new IPhone();
             default:
                 return null;
         }
