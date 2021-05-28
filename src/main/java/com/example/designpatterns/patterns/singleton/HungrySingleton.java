@@ -9,7 +9,11 @@ package com.example.designpatterns.patterns.singleton;
 public class HungrySingleton {
     private static HungrySingleton instance = new HungrySingleton();
 
-    public HungrySingleton getInstance() {
+    public static HungrySingleton getInstance() {
         return instance;
+    }
+
+    public void doSomething() {
+        System.out.println("do something");
     }
 }

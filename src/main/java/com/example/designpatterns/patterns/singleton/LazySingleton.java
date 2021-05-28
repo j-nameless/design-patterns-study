@@ -22,4 +22,8 @@ public class LazySingleton {
         }
         return instance;
     }
+
+    public void doSomething() {
+        System.out.println("do something");
+    }
 }

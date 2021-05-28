@@ -1,5 +1,13 @@
 package com.example.designpatterns.patterns;
 
+import com.example.designpatterns.patterns.adapter.class_adapter.ClassAdapter;
+import com.example.designpatterns.patterns.adapter.class_adapter.ClassAdapterImp;
+import com.example.designpatterns.patterns.adapter.obj_adapter.ObjAdapter;
+import com.example.designpatterns.patterns.adapter.obj_adapter.ObjAdapterImp;
+import com.example.designpatterns.patterns.bridge.Black;
+import com.example.designpatterns.patterns.bridge.IPhone;
+import com.example.designpatterns.patterns.bridge.Phone;
+import com.example.designpatterns.patterns.bridge.Red;
 import com.example.designpatterns.patterns.builder.Person;
 import com.example.designpatterns.patterns.factory.Apple;
 import com.example.designpatterns.patterns.factory.HuaWei;
@@ -9,6 +17,9 @@ import com.example.designpatterns.patterns.factory.abstract_factory.PhoneFactory
 import com.example.designpatterns.patterns.factory.enums.AppleEnum;
 import com.example.designpatterns.patterns.factory.simple.SimpleFactory;
 import com.example.designpatterns.patterns.proxy.*;
+import com.example.designpatterns.patterns.singleton.EnumSingleton;
+import com.example.designpatterns.patterns.singleton.HungrySingleton;
+import com.example.designpatterns.patterns.singleton.LazySingleton;
 import com.example.designpatterns.patterns.state.StateMachine;
 import com.example.designpatterns.patterns.state.enums.ActionEnum;
 import com.example.designpatterns.patterns.state.enums.StateEnum;
@@ -49,12 +60,14 @@ class PatternsApplicationTests {
     //构造者模式
     @Test
     public void buildTest() {
+        //类属性过多的时候
         Person.Builder builder = new Person.Builder("man",11,"test");
         builder.setPhone(11111).setCardId("512");
         Person person = builder.buildPerson();
         System.out.println(person);
     }
 
+    //工厂模式
     @Test
     public void factoryTest() {
         Apple simpleApple = SimpleFactory.mackProduct(AppleEnum.IPHONE);
@@ -75,6 +88,7 @@ class PatternsApplicationTests {
         System.out.println(huaWei2.getClass().getName());
     }
 
+    //代理模式
     @Test
     public void proxyTest() {
         StaticProxy proxy = new StaticProxyImpl(new StaticActualImpl());
@@ -97,6 +111,39 @@ class PatternsApplicationTests {
         TestCglib o1 = (TestCglib) enhancer.create();
         o1.print();
     }
+
+    //单例模式
+    @Test
+    public void singletonTest() {
+        EnumSingleton.INSTANCE.doSomething();
+
+        HungrySingleton.getInstance().doSomething();
+
+        LazySingleton.getInstance().doSomething();
+    }
+
+    //适配器模式
+    @Test
+    public void adapterTest() {
+        //类适配器
+        ClassAdapter classAdapter = new ClassAdapterImp();
+        classAdapter.doRequest();
+        //对象适配器
+        ObjAdapter objAdapter = new ObjAdapterImp();
+        objAdapter.doRequest();
+
+    }
+
+    @Test
+    public void bridgeTest() {
+        //如果所需类有多个维度的变化，使用桥接可封装变化
+        Phone redIPhone = new IPhone(new Red());
+        System.out.println(redIPhone.getColor());
+
+        Phone blackIPhone = new IPhone(new Black());
+        System.out.println(blackIPhone.getColor());
+    }
+
 
 
 }

@@ -19,6 +19,7 @@ public class ObjAdapterImp implements ObjAdapter {
 
     @Override
     public void doRequest() {
+        System.out.println("对象适配器调用");
         target.targetRequest();
     }
 }

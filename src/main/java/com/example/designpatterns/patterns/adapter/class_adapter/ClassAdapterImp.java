@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class ClassAdapterImp extends Target implements ClassAdapter {
     @Override
     public void doRequest() {
-        System.out.println("调用适配器方法");
+        System.out.println("调用类适配器方法");
         super.targetRequest();
     }
 }
