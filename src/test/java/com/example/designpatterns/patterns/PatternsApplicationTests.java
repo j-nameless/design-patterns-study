@@ -9,6 +9,13 @@ import com.example.designpatterns.patterns.bridge.IPhone;
 import com.example.designpatterns.patterns.bridge.Phone;
 import com.example.designpatterns.patterns.bridge.Red;
 import com.example.designpatterns.patterns.builder.Person;
+import com.example.designpatterns.patterns.composite.Branch;
+import com.example.designpatterns.patterns.composite.Component;
+import com.example.designpatterns.patterns.composite.Leaf;
+import com.example.designpatterns.patterns.decorator.Cake;
+import com.example.designpatterns.patterns.decorator.Pancake;
+import com.example.designpatterns.patterns.decorator.SauceCake;
+import com.example.designpatterns.patterns.facade.FacadeCustomer;
 import com.example.designpatterns.patterns.factory.Apple;
 import com.example.designpatterns.patterns.factory.HuaWei;
 import com.example.designpatterns.patterns.factory.abstract_factory.AbstractFactory;
@@ -16,6 +23,10 @@ import com.example.designpatterns.patterns.factory.abstract_factory.ComputerFact
 import com.example.designpatterns.patterns.factory.abstract_factory.PhoneFactory;
 import com.example.designpatterns.patterns.factory.enums.AppleEnum;
 import com.example.designpatterns.patterns.factory.simple.SimpleFactory;
+import com.example.designpatterns.patterns.flyweight.ConcreteFlyweight;
+import com.example.designpatterns.patterns.flyweight.Flyweight;
+import com.example.designpatterns.patterns.flyweight.FlyweightFactory;
+import com.example.designpatterns.patterns.flyweight.UnShareFlyweight;
 import com.example.designpatterns.patterns.proxy.*;
 import com.example.designpatterns.patterns.singleton.EnumSingleton;
 import com.example.designpatterns.patterns.singleton.HungrySingleton;
@@ -134,6 +145,7 @@ class PatternsApplicationTests {
 
     }
 
+    //桥接
     @Test
     public void bridgeTest() {
         //如果所需类有多个维度的变化，使用桥接可封装变化
@@ -144,6 +156,43 @@ class PatternsApplicationTests {
         System.out.println(blackIPhone.getColor());
     }
 
+    //装饰
+    @Test
+    public void decoratorTest() {
+        //java io流，装饰模式的经典案例
+        Cake cake = new SauceCake(new Pancake());
+        cake.getCake();
+    }
 
+    //外观
+    @Test
+    public void facadeTest() {
+        FacadeCustomer facadeCustomer = new FacadeCustomer();
+        facadeCustomer.doSomething();
+    }
+
+
+    //享元
+    @Test
+    public void flyweight() {
+        Flyweight flyweight = FlyweightFactory.getFlyweight("a");
+
+        flyweight.printInfo(new UnShareFlyweight("非共享的信息"));
+    }
+
+    @Test
+    public void compositeTest() {
+        //tree[leaf,branch[leaf,leaf]]
+        Component tree = new Branch("       树");
+        Component leaf = new Leaf("树叶");
+        Component branch = new Branch("          树枝");
+        Component leaf2 = new Leaf("        树叶");
+        Component leaf3 = new Leaf("                 树叶");
+        tree.add(leaf);
+        tree.add(branch);
+        branch.add(leaf2);
+        branch.add(leaf3);
+        tree.operate();
+    }
 
 }
