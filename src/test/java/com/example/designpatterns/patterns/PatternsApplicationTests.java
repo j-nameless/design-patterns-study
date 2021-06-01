@@ -9,6 +9,12 @@ import com.example.designpatterns.patterns.bridge.IPhone;
 import com.example.designpatterns.patterns.bridge.Phone;
 import com.example.designpatterns.patterns.bridge.Red;
 import com.example.designpatterns.patterns.builder.Person;
+import com.example.designpatterns.patterns.chain.Handler;
+import com.example.designpatterns.patterns.chain.HandlerA;
+import com.example.designpatterns.patterns.chain.HandlerB;
+import com.example.designpatterns.patterns.command.Command;
+import com.example.designpatterns.patterns.command.CommandA;
+import com.example.designpatterns.patterns.command.Invoke;
 import com.example.designpatterns.patterns.composite.Branch;
 import com.example.designpatterns.patterns.composite.Component;
 import com.example.designpatterns.patterns.composite.Leaf;
@@ -27,6 +33,10 @@ import com.example.designpatterns.patterns.flyweight.ConcreteFlyweight;
 import com.example.designpatterns.patterns.flyweight.Flyweight;
 import com.example.designpatterns.patterns.flyweight.FlyweightFactory;
 import com.example.designpatterns.patterns.flyweight.UnShareFlyweight;
+import com.example.designpatterns.patterns.observe.Event;
+import com.example.designpatterns.patterns.observe.EventListenerA;
+import com.example.designpatterns.patterns.observe.EventListenerB;
+import com.example.designpatterns.patterns.observe.ListenerSource;
 import com.example.designpatterns.patterns.proxy.*;
 import com.example.designpatterns.patterns.singleton.EnumSingleton;
 import com.example.designpatterns.patterns.singleton.HungrySingleton;
@@ -35,6 +45,9 @@ import com.example.designpatterns.patterns.state.StateMachine;
 import com.example.designpatterns.patterns.state.enums.ActionEnum;
 import com.example.designpatterns.patterns.state.enums.StateEnum;
 import com.example.designpatterns.patterns.state.utils.EnumUtil;
+import com.example.designpatterns.patterns.strategy.StrategyFactory;
+import com.example.designpatterns.patterns.template.AbstractClass;
+import com.example.designpatterns.patterns.template.ConcreteClass;
 import net.sf.cglib.proxy.Enhancer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -180,6 +193,7 @@ class PatternsApplicationTests {
         flyweight.printInfo(new UnShareFlyweight("非共享的信息"));
     }
 
+    //组合
     @Test
     public void compositeTest() {
         //tree[leaf,branch[leaf,leaf]]
@@ -193,6 +207,47 @@ class PatternsApplicationTests {
         branch.add(leaf2);
         branch.add(leaf3);
         tree.operate();
+    }
+
+    //模板
+    @Test
+    public void templateTest() {
+        AbstractClass abstractClass = new ConcreteClass();
+        abstractClass.templateMethod();
+    }
+
+    //策略
+    @Test
+    public void strategyTest() {
+        StrategyFactory.operate();
+    }
+
+    //命令
+    @Test
+    public void commandTest() {
+        Command command = new CommandA();
+        Invoke invoke = new Invoke(command);
+        invoke.call();
+    }
+
+    //责任链
+    @Test
+    public void chainTest() {
+        Handler handlerA = new HandlerA();
+        Handler handlerB = new HandlerB();
+        handlerA.setNext(handlerB);
+        handlerA.handlerRequest();
+    }
+
+    //观察者
+    @Test
+    public void observeTest() {
+        ListenerSource source = new ListenerSource();
+        source.addListener(new EventListenerA());
+        source.addListener(new EventListenerB());
+        Event e = new Event();
+        e.setFlag(true);
+        source.notify(e);
     }
 
 }
