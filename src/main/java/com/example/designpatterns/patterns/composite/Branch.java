@@ -32,7 +32,8 @@ public class Branch implements Component {
 
     @Override
     public void operate() {
-        System.out.println(name);
+        System.out.print(name);
+        System.out.println();
         children.forEach(Component::operate);
     }
 }

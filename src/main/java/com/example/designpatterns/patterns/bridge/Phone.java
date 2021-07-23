@@ -14,5 +14,5 @@ public abstract class Phone {
         this.color = color;
     }
 
-    public abstract String getColor();
+    public abstract String getInfo();
 }

@@ -3,18 +3,17 @@ package com.example.designpatterns.patterns.bridge;
 /**
  * @author jc
  * @version 1.0.0
- * @className IPhone
+ * @className Mate40
  * @description
- * @date 2021/5/21
+ * @date 2021-07-23
  */
-public class IPhone extends Phone {
-    public IPhone(Color color) {
+public class Mate40 extends Phone {
+    public Mate40(Color color) {
         super(color);
     }
 
     @Override
     public String getInfo() {
-        return color.getColor()+" IPhone";
+        return color.getColor()+" Mate40";
     }
-
 }

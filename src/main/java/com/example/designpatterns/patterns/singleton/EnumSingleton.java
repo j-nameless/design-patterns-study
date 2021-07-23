@@ -7,6 +7,7 @@ package com.example.designpatterns.patterns.singleton;
  * @author JC
  */
 public enum  EnumSingleton {
+    //单例模式
     INSTANCE;
 
     public void doSomething(){

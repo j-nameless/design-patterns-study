@@ -27,6 +27,6 @@ public class Leaf implements Component {
 
     @Override
     public void operate() {
-        System.out.println(name);
+        System.out.print(name);
     }
 }
